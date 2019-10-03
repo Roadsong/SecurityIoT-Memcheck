@@ -1,0 +1,81 @@
+==8144== Memcheck, a memory error detector
+==8144== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8144== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==8144== Command: ./embeddedlab
+==8144== Parent PID: 5897
+==8144== 
+==8144== 
+==8144== HEAP SUMMARY:
+==8144==     in use at exit: 304 bytes in 8 blocks
+==8144==   total heap usage: 410 allocs, 402 frees, 114,875,398 bytes allocated
+==8144== 
+==8144== 32 bytes in 2 blocks are still reachable in loss record 1 of 5
+==8144==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==8144==    by 0x1331AF: __gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==8144==    by 0x1322A3: std::allocator_traits<std::allocator<double> >::allocate(std::allocator<double>&, unsigned long) (alloc_traits.h:436)
+==8144==    by 0x13096F: std::_Vector_base<double, std::allocator<double> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==8144==    by 0x130E26: std::_Vector_base<double, std::allocator<double> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==8144==    by 0x12EFB0: std::_Vector_base<double, std::allocator<double> >::_Vector_base(unsigned long, std::allocator<double> const&) (stl_vector.h:138)
+==8144==    by 0x12D6A8: std::vector<double, std::allocator<double> >::vector(std::vector<double, std::allocator<double> > const&) (stl_vector.h:328)
+==8144==    by 0x137E63: Cluster::Cluster(Cluster const&) (kmeans.h:46)
+==8144==    by 0x137EED: void std::_Construct<Cluster, Cluster const&>(Cluster*, Cluster const&) (stl_construct.h:75)
+==8144==    by 0x137953: Cluster* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*) (stl_uninitialized.h:83)
+==8144==    by 0x1376A5: Cluster* std::uninitialized_copy<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*) (stl_uninitialized.h:134)
+==8144==    by 0x1373E0: Cluster* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*, Cluster>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*, std::allocator<Cluster>&) (stl_uninitialized.h:289)
+==8144== 
+==8144== 32 bytes in 2 blocks are still reachable in loss record 2 of 5
+==8144==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==8144==    by 0x1331AF: __gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==8144==    by 0x1322A3: std::allocator_traits<std::allocator<double> >::allocate(std::allocator<double>&, unsigned long) (alloc_traits.h:436)
+==8144==    by 0x13096F: std::_Vector_base<double, std::allocator<double> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==8144==    by 0x130E26: std::_Vector_base<double, std::allocator<double> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==8144==    by 0x12EFB0: std::_Vector_base<double, std::allocator<double> >::_Vector_base(unsigned long, std::allocator<double> const&) (stl_vector.h:138)
+==8144==    by 0x12D6A8: std::vector<double, std::allocator<double> >::vector(std::vector<double, std::allocator<double> > const&) (stl_vector.h:328)
+==8144==    by 0x12CEC2: Point::Point(Point const&) (kmeans.h:26)
+==8144==    by 0x138897: void std::_Construct<Point, Point const&>(Point*, Point const&) (stl_construct.h:75)
+==8144==    by 0x13874C: Point* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*>(__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*) (stl_uninitialized.h:83)
+==8144==    by 0x13862E: Point* std::uninitialized_copy<__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*>(__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*) (stl_uninitialized.h:134)
+==8144==    by 0x138470: Point* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*, Point>(__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*, std::allocator<Point>&) (stl_uninitialized.h:289)
+==8144== 
+==8144== 48 bytes in 1 blocks are still reachable in loss record 3 of 5
+==8144==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==8144==    by 0x135B1A: MlModule::getInstance() (mlModule.cpp:8)
+==8144==    by 0x1297C0: unitTestKMeans() (unitTest.cpp:275)
+==8144==    by 0x12880C: runUnitTest() (unitTest.cpp:48)
+==8144==    by 0x1231AD: main (main.cpp:33)
+==8144== 
+==8144== 80 bytes in 2 blocks are still reachable in loss record 4 of 5
+==8144==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==8144==    by 0x133305: __gnu_cxx::new_allocator<Point>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==8144==    by 0x13249D: std::allocator_traits<std::allocator<Point> >::allocate(std::allocator<Point>&, unsigned long) (alloc_traits.h:436)
+==8144==    by 0x131089: std::_Vector_base<Point, std::allocator<Point> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==8144==    by 0x1385BE: std::_Vector_base<Point, std::allocator<Point> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==8144==    by 0x13841E: std::_Vector_base<Point, std::allocator<Point> >::_Vector_base(unsigned long, std::allocator<Point> const&) (stl_vector.h:138)
+==8144==    by 0x1381DC: std::vector<Point, std::allocator<Point> >::vector(std::vector<Point, std::allocator<Point> > const&) (stl_vector.h:328)
+==8144==    by 0x137E7E: Cluster::Cluster(Cluster const&) (kmeans.h:46)
+==8144==    by 0x137EED: void std::_Construct<Cluster, Cluster const&>(Cluster*, Cluster const&) (stl_construct.h:75)
+==8144==    by 0x137953: Cluster* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*) (stl_uninitialized.h:83)
+==8144==    by 0x1376A5: Cluster* std::uninitialized_copy<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*) (stl_uninitialized.h:134)
+==8144==    by 0x1373E0: Cluster* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*, Cluster>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*, std::allocator<Cluster>&) (stl_uninitialized.h:289)
+==8144== 
+==8144== 112 bytes in 1 blocks are still reachable in loss record 5 of 5
+==8144==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==8144==    by 0x13359F: __gnu_cxx::new_allocator<Cluster>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==8144==    by 0x132924: std::allocator_traits<std::allocator<Cluster> >::allocate(std::allocator<Cluster>&, unsigned long) (alloc_traits.h:436)
+==8144==    by 0x13165D: std::_Vector_base<Cluster, std::allocator<Cluster> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==8144==    by 0x137618: std::_Vector_base<Cluster, std::allocator<Cluster> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==8144==    by 0x1372E6: std::_Vector_base<Cluster, std::allocator<Cluster> >::_Vector_base(unsigned long, std::allocator<Cluster> const&) (stl_vector.h:138)
+==8144==    by 0x136E68: std::vector<Cluster, std::allocator<Cluster> >::vector(std::vector<Cluster, std::allocator<Cluster> > const&) (stl_vector.h:328)
+==8144==    by 0x136031: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:62)
+==8144==    by 0x129850: unitTestKMeans() (unitTest.cpp:283)
+==8144==    by 0x12880C: runUnitTest() (unitTest.cpp:48)
+==8144==    by 0x1231AD: main (main.cpp:33)
+==8144== 
+==8144== LEAK SUMMARY:
+==8144==    definitely lost: 0 bytes in 0 blocks
+==8144==    indirectly lost: 0 bytes in 0 blocks
+==8144==      possibly lost: 0 bytes in 0 blocks
+==8144==    still reachable: 304 bytes in 8 blocks
+==8144==         suppressed: 0 bytes in 0 blocks
+==8144== 
+==8144== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

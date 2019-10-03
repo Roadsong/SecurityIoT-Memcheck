@@ -1,0 +1,63 @@
+==11174== Memcheck, a memory error detector
+==11174== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==11174== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==11174== Command: ./embeddedlab
+==11174== Parent PID: 5897
+==11174== 
+==11174== 
+==11174== HEAP SUMMARY:
+==11174==     in use at exit: 139,881 bytes in 4 blocks
+==11174==   total heap usage: 153 allocs, 149 frees, 115,159,915 bytes allocated
+==11174== 
+==11174== 64 bytes in 1 blocks are still reachable in loss record 1 of 4
+==11174==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==11174==    by 0x141E38: MlModule::getInstance() (mlModule.cpp:9)
+==11174==    by 0x127B07: unitTestSVM() (unitTest.cpp:241)
+==11174==    by 0x1269EC: runUnitTest() (unitTest.cpp:53)
+==11174==    by 0x1211BD: main (main.cpp:33)
+==11174== 
+==11174== 552 bytes in 1 blocks are still reachable in loss record 2 of 4
+==11174==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==11174==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==11174==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==11174==    by 0x4EF0DFF: std::__basic_file<char>::open(char const*, std::_Ios_Openmode, int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==11174==    by 0x4F31199: std::basic_filebuf<char, std::char_traits<char> >::open(char const*, std::_Ios_Openmode) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==11174==    by 0x4F31BBD: std::basic_ifstream<char, std::char_traits<char> >::basic_ifstream(char const*, std::_Ios_Openmode) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==11174==    by 0x141FB8: MlModule::hashMlModel(char const*) (mlModule.cpp:67)
+==11174==    by 0x1421F6: MlModule::trainMlModel(char const*) (mlModule.cpp:103)
+==11174==    by 0x127B19: unitTestSVM() (unitTest.cpp:241)
+==11174==    by 0x1269EC: runUnitTest() (unitTest.cpp:53)
+==11174==    by 0x1211BD: main (main.cpp:33)
+==11174== 
+==11174== 8,192 bytes in 1 blocks are still reachable in loss record 3 of 4
+==11174==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==11174==    by 0x4F2D097: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==11174==    by 0x4F311B1: std::basic_filebuf<char, std::char_traits<char> >::open(char const*, std::_Ios_Openmode) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==11174==    by 0x4F31BBD: std::basic_ifstream<char, std::char_traits<char> >::basic_ifstream(char const*, std::_Ios_Openmode) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==11174==    by 0x141FB8: MlModule::hashMlModel(char const*) (mlModule.cpp:67)
+==11174==    by 0x1421F6: MlModule::trainMlModel(char const*) (mlModule.cpp:103)
+==11174==    by 0x127B19: unitTestSVM() (unitTest.cpp:241)
+==11174==    by 0x1269EC: runUnitTest() (unitTest.cpp:53)
+==11174==    by 0x1211BD: main (main.cpp:33)
+==11174== 
+==11174== 131,073 bytes in 1 blocks are still reachable in loss record 4 of 4
+==11174==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==11174==    by 0x4F6217C: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==11174==    by 0x4F55DD7: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==11174==    by 0x4F605AA: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==11174==    by 0x4EE9494: long std::__copy_streambufs_eof<char, std::char_traits<char> >(std::basic_streambuf<char, std::char_traits<char> >*, std::basic_streambuf<char, std::char_traits<char> >*, bool&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==11174==    by 0x4F50647: std::ostream::operator<<(std::basic_streambuf<char, std::char_traits<char> >*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==11174==    by 0x142002: MlModule::hashMlModel(char const*) (mlModule.cpp:69)
+==11174==    by 0x1421F6: MlModule::trainMlModel(char const*) (mlModule.cpp:103)
+==11174==    by 0x127B19: unitTestSVM() (unitTest.cpp:241)
+==11174==    by 0x1269EC: runUnitTest() (unitTest.cpp:53)
+==11174==    by 0x1211BD: main (main.cpp:33)
+==11174== 
+==11174== LEAK SUMMARY:
+==11174==    definitely lost: 0 bytes in 0 blocks
+==11174==    indirectly lost: 0 bytes in 0 blocks
+==11174==      possibly lost: 0 bytes in 0 blocks
+==11174==    still reachable: 139,881 bytes in 4 blocks
+==11174==         suppressed: 0 bytes in 0 blocks
+==11174== 
+==11174== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

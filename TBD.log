@@ -1,0 +1,101 @@
+==8583== Memcheck, a memory error detector
+==8583== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8583== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==8583== Command: ./embeddedlab
+==8583== Parent PID: 5897
+==8583== 
+==8583== 
+==8583== HEAP SUMMARY:
+==8583==     in use at exit: 413,096 bytes in 11 blocks
+==8583==   total heap usage: 124,863 allocs, 124,852 frees, 317,945,460 bytes allocated
+==8583== 
+==8583== 168 bytes in 1 blocks are still reachable in loss record 1 of 11
+==8583==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==8583==    by 0x12DE52: MlModule::getInstance() (mlModule.cpp:11)
+==8583==    by 0x118996: unitTestSVM() (unitTest.cpp:224)
+==8583==    by 0x117938: runUnitTest() (unitTest.cpp:55)
+==8583==    by 0x111F9D: main (main.cpp:36)
+==8583== 
+==8583== 552 bytes in 1 blocks are still reachable in loss record 2 of 11
+==8583==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==8583==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==8583==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==8583==    by 0x12E77B: MlModule::makeInference(char const*, char const*) (mlModule.cpp:202)
+==8583==    by 0x118A81: unitTestSVM() (unitTest.cpp:236)
+==8583==    by 0x117938: runUnitTest() (unitTest.cpp:55)
+==8583==    by 0x111F9D: main (main.cpp:36)
+==8583== 
+==8583== 552 bytes in 1 blocks are still reachable in loss record 3 of 11
+==8583==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==8583==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==8583==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==8583==    by 0x12E792: MlModule::makeInference(char const*, char const*) (mlModule.cpp:203)
+==8583==    by 0x118A81: unitTestSVM() (unitTest.cpp:236)
+==8583==    by 0x117938: runUnitTest() (unitTest.cpp:55)
+==8583==    by 0x111F9D: main (main.cpp:36)
+==8583== 
+==8583== 704 bytes in 1 blocks are definitely lost in loss record 4 of 11
+==8583==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==8583==    by 0x12F5CF: UserDatabase::loadUserDatabase(char const*) (userControl.cpp:115)
+==8583==    by 0x1182FA: unitTestUserControl() (unitTest.cpp:149)
+==8583==    by 0x117929: runUnitTest() (unitTest.cpp:52)
+==8583==    by 0x111F9D: main (main.cpp:36)
+==8583== 
+==8583== 704 bytes in 1 blocks are definitely lost in loss record 5 of 11
+==8583==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==8583==    by 0x11A98B: CryptoUtil::verify_data(unsigned char**, unsigned long long*, unsigned char*, int, unsigned char*) (cryptoUtil.cpp:225)
+==8583==    by 0x12F61F: UserDatabase::loadUserDatabase(char const*) (userControl.cpp:125)
+==8583==    by 0x1182FA: unitTestUserControl() (unitTest.cpp:149)
+==8583==    by 0x117929: runUnitTest() (unitTest.cpp:52)
+==8583==    by 0x111F9D: main (main.cpp:36)
+==8583== 
+==8583== 1,024 bytes in 1 blocks are still reachable in loss record 6 of 11
+==8583==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==8583==    by 0x12E7AA: MlModule::makeInference(char const*, char const*) (mlModule.cpp:205)
+==8583==    by 0x118A81: unitTestSVM() (unitTest.cpp:236)
+==8583==    by 0x117938: runUnitTest() (unitTest.cpp:55)
+==8583==    by 0x111F9D: main (main.cpp:36)
+==8583== 
+==8583== 1,024 bytes in 1 blocks are still reachable in loss record 7 of 11
+==8583==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==8583==    by 0x12E98E: MlModule::makeInference(char const*, char const*) (mlModule.cpp:236)
+==8583==    by 0x118A81: unitTestSVM() (unitTest.cpp:236)
+==8583==    by 0x117938: runUnitTest() (unitTest.cpp:55)
+==8583==    by 0x111F9D: main (main.cpp:36)
+==8583== 
+==8583== 1,024 bytes in 1 blocks are definitely lost in loss record 8 of 11
+==8583==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==8583==    by 0x12E110: MlModule::trainMlModel(char const*, char const*) (mlModule.cpp:84)
+==8583==    by 0x1189AF: unitTestSVM() (unitTest.cpp:224)
+==8583==    by 0x117938: runUnitTest() (unitTest.cpp:55)
+==8583==    by 0x111F9D: main (main.cpp:36)
+==8583== 
+==8583== 12,840 bytes in 1 blocks are still reachable in loss record 9 of 11
+==8583==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==8583==    by 0x12E1BF: MlModule::trainMlModel(char const*, char const*) (mlModule.cpp:102)
+==8583==    by 0x1189AF: unitTestSVM() (unitTest.cpp:224)
+==8583==    by 0x117938: runUnitTest() (unitTest.cpp:55)
+==8583==    by 0x111F9D: main (main.cpp:36)
+==8583== 
+==8583== 12,840 bytes in 1 blocks are still reachable in loss record 10 of 11
+==8583==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==8583==    by 0x12E1DF: MlModule::trainMlModel(char const*, char const*) (mlModule.cpp:103)
+==8583==    by 0x1189AF: unitTestSVM() (unitTest.cpp:224)
+==8583==    by 0x117938: runUnitTest() (unitTest.cpp:55)
+==8583==    by 0x111F9D: main (main.cpp:36)
+==8583== 
+==8583== 381,664 bytes in 1 blocks are still reachable in loss record 11 of 11
+==8583==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==8583==    by 0x12E1FD: MlModule::trainMlModel(char const*, char const*) (mlModule.cpp:104)
+==8583==    by 0x1189AF: unitTestSVM() (unitTest.cpp:224)
+==8583==    by 0x117938: runUnitTest() (unitTest.cpp:55)
+==8583==    by 0x111F9D: main (main.cpp:36)
+==8583== 
+==8583== LEAK SUMMARY:
+==8583==    definitely lost: 2,432 bytes in 3 blocks
+==8583==    indirectly lost: 0 bytes in 0 blocks
+==8583==      possibly lost: 0 bytes in 0 blocks
+==8583==    still reachable: 410,664 bytes in 8 blocks
+==8583==         suppressed: 0 bytes in 0 blocks
+==8583== 
+==8583== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
