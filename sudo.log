@@ -1,0 +1,607 @@
+==2799== Memcheck, a memory error detector
+==2799== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2799== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==2799== Command: ./embeddedlab
+==2799== Parent PID: 2007
+==2799== 
+==2799== Invalid read of size 4
+==2799==    at 0x127DB7: tensor_to_string(tensor_t<float>&) (tensor_t.h:118)
+==2799==    by 0x12BE5E: conv_layer_t::toString[abi:cxx11]() (conv_layer_t.h:174)
+==2799==    by 0x13C1C9: toString(layer_t*) (cnn.h:80)
+==2799==    by 0x13CB22: save_network(std::vector<layer_t*, std::allocator<layer_t*> > const&, char const*) (mlModule.cpp:125)
+==2799==    by 0x13DC16: MlModule::saveMlModel(char const*) (mlModule.cpp:320)
+==2799==    by 0x12FB2F: unitTestCNN() (unitTest.cpp:228)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799==  Address 0xdfe7e70 is 0 bytes inside a block of size 3,136 free'd
+==2799==    at 0x4C31B16: operator delete[](void*) (vg_replace_malloc.c:651)
+==2799==    by 0x12C6C8: tensor_t<float>::~tensor_t() (tensor_t.h:76)
+==2799==    by 0x13EBAB: case_t::~case_t() (mlModule.cpp:24)
+==2799==    by 0x143772: void std::_Destroy<case_t>(case_t*) (stl_construct.h:98)
+==2799==    by 0x143046: void std::_Destroy_aux<false>::__destroy<case_t*>(case_t*, case_t*) (stl_construct.h:108)
+==2799==    by 0x141E33: void std::_Destroy<case_t*>(case_t*, case_t*) (stl_construct.h:137)
+==2799==    by 0x140816: void std::_Destroy<case_t*, case_t>(case_t*, case_t*, std::allocator<case_t>&) (stl_construct.h:206)
+==2799==    by 0x13F33E: std::vector<case_t, std::allocator<case_t> >::~vector() (stl_vector.h:434)
+==2799==    by 0x13DB60: MlModule::trainMlModel(char const*) (mlModule.cpp:286)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799==  Block was alloc'd at
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x141E5B: case_t::case_t(case_t const&) (mlModule.cpp:24)
+==2799==    by 0x141EE5: void __gnu_cxx::new_allocator<case_t>::construct<case_t, case_t const&>(case_t*, case_t const&) (new_allocator.h:136)
+==2799==    by 0x14085D: void std::allocator_traits<std::allocator<case_t> >::construct<case_t, case_t const&>(std::allocator<case_t>&, case_t*, case_t const&) (alloc_traits.h:475)
+==2799==    by 0x13F38D: std::vector<case_t, std::allocator<case_t> >::push_back(case_t const&) (stl_vector.h:943)
+==2799==    by 0x13C607: read_test_cases() (mlModule.cpp:67)
+==2799==    by 0x13D85D: MlModule::trainMlModel(char const*) (mlModule.cpp:286)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 
+==2799== HEAP SUMMARY:
+==2799==     in use at exit: 358,600 bytes in 67 blocks
+==2799==   total heap usage: 536,216 allocs, 536,149 frees, 770,737,035 bytes allocated
+==2799== 
+==2799== 32 bytes in 1 blocks are still reachable in loss record 1 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x143873: __gnu_cxx::new_allocator<layer_t*>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2799==    by 0x14317D: std::allocator_traits<std::allocator<layer_t*> >::allocate(std::allocator<layer_t*>&, unsigned long) (alloc_traits.h:436)
+==2799==    by 0x14229B: std::_Vector_base<layer_t*, std::allocator<layer_t*> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2799==    by 0x140C7B: void std::vector<layer_t*, std::allocator<layer_t*> >::_M_realloc_insert<layer_t*>(__gnu_cxx::__normal_iterator<layer_t**, std::vector<layer_t*, std::allocator<layer_t*> > >, layer_t*&&) (vector.tcc:406)
+==2799==    by 0x13F7F3: void std::vector<layer_t*, std::allocator<layer_t*> >::emplace_back<layer_t*>(layer_t*&&) (vector.tcc:105)
+==2799==    by 0x13D3A3: load_network(char const*) (mlModule.cpp:231)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 40 bytes in 1 blocks are definitely lost in loss record 2 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13DE21: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:23)
+==2799==    by 0x13D9DF: MlModule::trainMlModel(char const*) (mlModule.cpp:292)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 40 bytes in 1 blocks are definitely lost in loss record 3 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x12D979: __gnu_cxx::new_allocator<float>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2799==    by 0x12D6CC: std::allocator_traits<std::allocator<float> >::allocate(std::allocator<float>&, unsigned long) (alloc_traits.h:436)
+==2799==    by 0x12D2C1: std::_Vector_base<float, std::allocator<float> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2799==    by 0x1412BE: std::_Vector_base<float, std::allocator<float> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==2799==    by 0x13FC0C: std::_Vector_base<float, std::allocator<float> >::_Vector_base(unsigned long, std::allocator<float> const&) (stl_vector.h:138)
+==2799==    by 0x13EDEB: std::vector<float, std::allocator<float> >::vector(unsigned long, std::allocator<float> const&) (stl_vector.h:284)
+==2799==    by 0x13DE8C: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:25)
+==2799==    by 0x13D9DF: MlModule::trainMlModel(char const*) (mlModule.cpp:292)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 40 bytes in 1 blocks are definitely lost in loss record 4 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13E0EA: fc_layer_t::fc_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&) (fc_layer.h:39)
+==2799==    by 0x13CE0D: load_network(char const*) (mlModule.cpp:166)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 40 bytes in 1 blocks are definitely lost in loss record 5 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x12D979: __gnu_cxx::new_allocator<float>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2799==    by 0x12D6CC: std::allocator_traits<std::allocator<float> >::allocate(std::allocator<float>&, unsigned long) (alloc_traits.h:436)
+==2799==    by 0x12D2C1: std::_Vector_base<float, std::allocator<float> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2799==    by 0x1412BE: std::_Vector_base<float, std::allocator<float> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==2799==    by 0x13FC0C: std::_Vector_base<float, std::allocator<float> >::_Vector_base(unsigned long, std::allocator<float> const&) (stl_vector.h:138)
+==2799==    by 0x13EDEB: std::vector<float, std::allocator<float> >::vector(unsigned long, std::allocator<float> const&) (stl_vector.h:284)
+==2799==    by 0x13E14A: fc_layer_t::fc_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&) (fc_layer.h:40)
+==2799==    by 0x13CE0D: load_network(char const*) (mlModule.cpp:166)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799== 
+==2799== 72 bytes in 1 blocks are still reachable in loss record 6 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x13C278: MlModule::getInstance() (mlModule.cpp:10)
+==2799==    by 0x12FADE: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 76 bytes in 1 blocks are still reachable in loss record 7 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x13D1AA: load_network(char const*) (mlModule.cpp:211)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 76 bytes in 1 blocks are definitely lost in loss record 8 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x13D8FE: MlModule::trainMlModel(char const*) (mlModule.cpp:290)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 80 bytes in 1 blocks are still reachable in loss record 9 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x13D348: load_network(char const*) (mlModule.cpp:233)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 80 bytes in 1 blocks are definitely lost in loss record 10 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x13D95B: MlModule::trainMlModel(char const*) (mlModule.cpp:291)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 80 bytes in 1 blocks are definitely lost in loss record 11 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x143A6F: __gnu_cxx::new_allocator<gradient_t>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2799==    by 0x1434E6: std::allocator_traits<std::allocator<gradient_t> >::allocate(std::allocator<gradient_t>&, unsigned long) (alloc_traits.h:436)
+==2799==    by 0x1429CF: std::_Vector_base<gradient_t, std::allocator<gradient_t> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2799==    by 0x141492: std::_Vector_base<gradient_t, std::allocator<gradient_t> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==2799==    by 0x13FD8C: std::_Vector_base<gradient_t, std::allocator<gradient_t> >::_Vector_base(unsigned long, std::allocator<gradient_t> const&) (stl_vector.h:138)
+==2799==    by 0x13EEFD: std::vector<gradient_t, std::allocator<gradient_t> >::vector(unsigned long, std::allocator<gradient_t> const&) (stl_vector.h:284)
+==2799==    by 0x13DEE0: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:26)
+==2799==    by 0x13D9DF: MlModule::trainMlModel(char const*) (mlModule.cpp:292)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 80 bytes in 1 blocks are definitely lost in loss record 12 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x143A6F: __gnu_cxx::new_allocator<gradient_t>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2799==    by 0x1434E6: std::allocator_traits<std::allocator<gradient_t> >::allocate(std::allocator<gradient_t>&, unsigned long) (alloc_traits.h:436)
+==2799==    by 0x1429CF: std::_Vector_base<gradient_t, std::allocator<gradient_t> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2799==    by 0x141492: std::_Vector_base<gradient_t, std::allocator<gradient_t> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==2799==    by 0x13FD8C: std::_Vector_base<gradient_t, std::allocator<gradient_t> >::_Vector_base(unsigned long, std::allocator<gradient_t> const&) (stl_vector.h:138)
+==2799==    by 0x13EEFD: std::vector<gradient_t, std::allocator<gradient_t> >::vector(unsigned long, std::allocator<gradient_t> const&) (stl_vector.h:284)
+==2799==    by 0x13E1A2: fc_layer_t::fc_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&) (fc_layer.h:41)
+==2799==    by 0x13CE0D: load_network(char const*) (mlModule.cpp:166)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799== 
+==2799== 100 bytes in 1 blocks are indirectly lost in loss record 13 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x141795: void __gnu_cxx::new_allocator<tensor_t<float> >::construct<tensor_t<float>, tensor_t<float> const&>(tensor_t<float>*, tensor_t<float> const&) (new_allocator.h:136)
+==2799==    by 0x1400A1: void std::allocator_traits<std::allocator<tensor_t<float> > >::construct<tensor_t<float>, tensor_t<float> const&>(std::allocator<tensor_t<float> >&, tensor_t<float>*, tensor_t<float> const&) (alloc_traits.h:475)
+==2799==    by 0x14016A: void std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_realloc_insert<tensor_t<float> const&>(__gnu_cxx::__normal_iterator<tensor_t<float>*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float> const&) (vector.tcc:415)
+==2799==    by 0x13F0E3: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:948)
+==2799==    by 0x13E929: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2799==    by 0x13D8B8: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 128 bytes in 1 blocks are still reachable in loss record 14 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x13D03D: load_network(char const*) (mlModule.cpp:197)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 128 bytes in 1 blocks are definitely lost in loss record 15 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x13D88E: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 148 bytes in 1 blocks are still reachable in loss record 16 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x13CDE0: load_network(char const*) (mlModule.cpp:166)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 148 bytes in 1 blocks are definitely lost in loss record 17 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x13D9C3: MlModule::trainMlModel(char const*) (mlModule.cpp:292)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 200 bytes in 1 blocks are indirectly lost in loss record 18 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x142D3B: tensor_t<gradient_t>::tensor_t(tensor_t<gradient_t> const&) (tensor_t.h:26)
+==2799==    by 0x1419F7: void __gnu_cxx::new_allocator<tensor_t<gradient_t> >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (new_allocator.h:136)
+==2799==    by 0x14038E: void std::allocator_traits<std::allocator<tensor_t<gradient_t> > >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(std::allocator<tensor_t<gradient_t> >&, tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (alloc_traits.h:475)
+==2799==    by 0x140456: void std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_realloc_insert<tensor_t<gradient_t> const&>(__gnu_cxx::__normal_iterator<tensor_t<gradient_t>*, std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > > >, tensor_t<gradient_t> const&) (vector.tcc:415)
+==2799==    by 0x13F243: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:948)
+==2799==    by 0x13E980: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2799==    by 0x13D8B8: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 300 bytes in 3 blocks are indirectly lost in loss record 19 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x141795: void __gnu_cxx::new_allocator<tensor_t<float> >::construct<tensor_t<float>, tensor_t<float> const&>(tensor_t<float>*, tensor_t<float> const&) (new_allocator.h:136)
+==2799==    by 0x1400A1: void std::allocator_traits<std::allocator<tensor_t<float> > >::construct<tensor_t<float>, tensor_t<float> const&>(std::allocator<tensor_t<float> >&, tensor_t<float>*, tensor_t<float> const&) (alloc_traits.h:475)
+==2799==    by 0x13F0AB: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:943)
+==2799==    by 0x13E929: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2799==    by 0x13D8B8: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 400 bytes in 4 blocks are indirectly lost in loss record 20 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x143976: void std::_Construct<tensor_t<float>, tensor_t<float> const&>(tensor_t<float>*, tensor_t<float> const&) (stl_construct.h:75)
+==2799==    by 0x143B06: tensor_t<float>* std::__uninitialized_copy<false>::__uninit_copy<tensor_t<float> const*, tensor_t<float>*>(tensor_t<float> const*, tensor_t<float> const*, tensor_t<float>*) (stl_uninitialized.h:83)
+==2799==    by 0x143655: tensor_t<float>* std::uninitialized_copy<tensor_t<float> const*, tensor_t<float>*>(tensor_t<float> const*, tensor_t<float> const*, tensor_t<float>*) (stl_uninitialized.h:134)
+==2799==    by 0x142C9A: tensor_t<float>* std::__uninitialized_copy_a<tensor_t<float> const*, tensor_t<float>*, tensor_t<float> >(tensor_t<float> const*, tensor_t<float> const*, tensor_t<float>*, std::allocator<tensor_t<float> >&) (stl_uninitialized.h:289)
+==2799==    by 0x14197D: tensor_t<float>* std::__uninitialized_move_if_noexcept_a<tensor_t<float>*, tensor_t<float>*, std::allocator<tensor_t<float> > >(tensor_t<float>*, tensor_t<float>*, tensor_t<float>*, std::allocator<tensor_t<float> >&) (stl_uninitialized.h:312)
+==2799==    by 0x1401A6: void std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_realloc_insert<tensor_t<float> const&>(__gnu_cxx::__normal_iterator<tensor_t<float>*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float> const&) (vector.tcc:424)
+==2799==    by 0x13F0E3: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:948)
+==2799==    by 0x13E929: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2799==    by 0x13D8B8: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799== 
+==2799== 600 bytes in 3 blocks are indirectly lost in loss record 21 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x142D3B: tensor_t<gradient_t>::tensor_t(tensor_t<gradient_t> const&) (tensor_t.h:26)
+==2799==    by 0x1419F7: void __gnu_cxx::new_allocator<tensor_t<gradient_t> >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (new_allocator.h:136)
+==2799==    by 0x14038E: void std::allocator_traits<std::allocator<tensor_t<gradient_t> > >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(std::allocator<tensor_t<gradient_t> >&, tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (alloc_traits.h:475)
+==2799==    by 0x13F20B: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:943)
+==2799==    by 0x13E980: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2799==    by 0x13D8B8: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 800 bytes in 4 blocks are indirectly lost in loss record 22 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x142D3B: tensor_t<gradient_t>::tensor_t(tensor_t<gradient_t> const&) (tensor_t.h:26)
+==2799==    by 0x143D97: void std::_Construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (stl_construct.h:75)
+==2799==    by 0x143BAC: tensor_t<gradient_t>* std::__uninitialized_copy<false>::__uninit_copy<tensor_t<gradient_t> const*, tensor_t<gradient_t>*>(tensor_t<gradient_t> const*, tensor_t<gradient_t> const*, tensor_t<gradient_t>*) (stl_uninitialized.h:83)
+==2799==    by 0x1436F9: tensor_t<gradient_t>* std::uninitialized_copy<tensor_t<gradient_t> const*, tensor_t<gradient_t>*>(tensor_t<gradient_t> const*, tensor_t<gradient_t> const*, tensor_t<gradient_t>*) (stl_uninitialized.h:134)
+==2799==    by 0x142EAD: tensor_t<gradient_t>* std::__uninitialized_copy_a<tensor_t<gradient_t> const*, tensor_t<gradient_t>*, tensor_t<gradient_t> >(tensor_t<gradient_t> const*, tensor_t<gradient_t> const*, tensor_t<gradient_t>*, std::allocator<tensor_t<gradient_t> >&) (stl_uninitialized.h:289)
+==2799==    by 0x141BDF: tensor_t<gradient_t>* std::__uninitialized_move_if_noexcept_a<tensor_t<gradient_t>*, tensor_t<gradient_t>*, std::allocator<tensor_t<gradient_t> > >(tensor_t<gradient_t>*, tensor_t<gradient_t>*, tensor_t<gradient_t>*, std::allocator<tensor_t<gradient_t> >&) (stl_uninitialized.h:312)
+==2799==    by 0x140492: void std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_realloc_insert<tensor_t<gradient_t> const&>(__gnu_cxx::__normal_iterator<tensor_t<gradient_t>*, std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > > >, tensor_t<gradient_t> const&) (vector.tcc:424)
+==2799==    by 0x13F243: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:948)
+==2799==    by 0x13E980: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2799==    by 0x13D8B8: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799== 
+==2799== 800 bytes in 8 blocks are indirectly lost in loss record 23 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x143976: void std::_Construct<tensor_t<float>, tensor_t<float> const&>(tensor_t<float>*, tensor_t<float> const&) (stl_construct.h:75)
+==2799==    by 0x1432E6: tensor_t<float>* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<tensor_t<float> const*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float>*>(__gnu_cxx::__normal_iterator<tensor_t<float> const*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, __gnu_cxx::__normal_iterator<tensor_t<float> const*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float>*) (stl_uninitialized.h:83)
+==2799==    by 0x142751: tensor_t<float>* std::uninitialized_copy<__gnu_cxx::__normal_iterator<tensor_t<float> const*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float>*>(__gnu_cxx::__normal_iterator<tensor_t<float> const*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, __gnu_cxx::__normal_iterator<tensor_t<float> const*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float>*) (stl_uninitialized.h:134)
+==2799==    by 0x1410CE: tensor_t<float>* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<tensor_t<float> const*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float>*, tensor_t<float> >(__gnu_cxx::__normal_iterator<tensor_t<float> const*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, __gnu_cxx::__normal_iterator<tensor_t<float> const*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float>*, std::allocator<tensor_t<float> >&) (stl_uninitialized.h:289)
+==2799==    by 0x13F8F0: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::vector(std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > const&) (stl_vector.h:331)
+==2799==    by 0x13D02C: load_network(char const*) (mlModule.cpp:196)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 992 (192 direct, 800 indirect) bytes in 1 blocks are definitely lost in loss record 24 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x143624: __gnu_cxx::new_allocator<tensor_t<float> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2799==    by 0x142C5B: std::allocator_traits<std::allocator<tensor_t<float> > >::allocate(std::allocator<tensor_t<float> >&, unsigned long) (alloc_traits.h:436)
+==2799==    by 0x141927: std::_Vector_base<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2799==    by 0x140121: void std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_realloc_insert<tensor_t<float> const&>(__gnu_cxx::__normal_iterator<tensor_t<float>*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float> const&) (vector.tcc:406)
+==2799==    by 0x13F0E3: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:948)
+==2799==    by 0x13E929: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2799==    by 0x13D8B8: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 992 (192 direct, 800 indirect) bytes in 1 blocks are definitely lost in loss record 25 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x143624: __gnu_cxx::new_allocator<tensor_t<float> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2799==    by 0x142C5B: std::allocator_traits<std::allocator<tensor_t<float> > >::allocate(std::allocator<tensor_t<float> >&, unsigned long) (alloc_traits.h:436)
+==2799==    by 0x141927: std::_Vector_base<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2799==    by 0x1426C4: std::_Vector_base<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==2799==    by 0x140FD4: std::_Vector_base<tensor_t<float>, std::allocator<tensor_t<float> > >::_Vector_base(unsigned long, std::allocator<tensor_t<float> > const&) (stl_vector.h:138)
+==2799==    by 0x13F8A2: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::vector(std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > const&) (stl_vector.h:328)
+==2799==    by 0x13D02C: load_network(char const*) (mlModule.cpp:196)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 1,792 (192 direct, 1,600 indirect) bytes in 1 blocks are definitely lost in loss record 26 of 50
+==2799==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2799==    by 0x1436C8: __gnu_cxx::new_allocator<tensor_t<gradient_t> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2799==    by 0x142E6E: std::allocator_traits<std::allocator<tensor_t<gradient_t> > >::allocate(std::allocator<tensor_t<gradient_t> >&, unsigned long) (alloc_traits.h:436)
+==2799==    by 0x141B89: std::_Vector_base<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2799==    by 0x14040D: void std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_realloc_insert<tensor_t<gradient_t> const&>(__gnu_cxx::__normal_iterator<tensor_t<gradient_t>*, std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > > >, tensor_t<gradient_t> const&) (vector.tcc:406)
+==2799==    by 0x13F243: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:948)
+==2799==    by 0x13E980: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2799==    by 0x13D8B8: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 3,136 bytes in 1 blocks are definitely lost in loss record 27 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13E6D4: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:27)
+==2799==    by 0x13D8B8: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 3,136 bytes in 1 blocks are definitely lost in loss record 28 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13E6EC: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:27)
+==2799==    by 0x13D8B8: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 3,136 bytes in 1 blocks are definitely lost in loss record 29 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13EA93: conv_layer_t::conv_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >, unsigned short, unsigned short) (conv_layer_t.h:60)
+==2799==    by 0x13D07D: load_network(char const*) (mlModule.cpp:197)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 3,136 bytes in 1 blocks are definitely lost in loss record 30 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13EAAA: conv_layer_t::conv_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >, unsigned short, unsigned short) (conv_layer_t.h:60)
+==2799==    by 0x13D07D: load_network(char const*) (mlModule.cpp:197)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 4,608 bytes in 1 blocks are definitely lost in loss record 31 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13E333: pool_layer_t::pool_layer_t(unsigned short, unsigned short, point_t) (pool_layer_t.h:22)
+==2799==    by 0x13D97D: MlModule::trainMlModel(char const*) (mlModule.cpp:291)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 4,608 bytes in 1 blocks are definitely lost in loss record 32 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13DDED: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:23)
+==2799==    by 0x13D9DF: MlModule::trainMlModel(char const*) (mlModule.cpp:292)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 4,608 bytes in 1 blocks are definitely lost in loss record 33 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13DE05: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:23)
+==2799==    by 0x13D9DF: MlModule::trainMlModel(char const*) (mlModule.cpp:292)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 4,608 bytes in 1 blocks are definitely lost in loss record 34 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13E4D1: pool_layer_t::pool_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, unsigned short, unsigned short) (pool_layer_t.h:37)
+==2799==    by 0x13D383: load_network(char const*) (mlModule.cpp:233)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 4,608 bytes in 1 blocks are definitely lost in loss record 35 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13E0BC: fc_layer_t::fc_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&) (fc_layer.h:39)
+==2799==    by 0x13CE0D: load_network(char const*) (mlModule.cpp:166)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 4,608 bytes in 1 blocks are definitely lost in loss record 36 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13E0D3: fc_layer_t::fc_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&) (fc_layer.h:39)
+==2799==    by 0x13CE0D: load_network(char const*) (mlModule.cpp:166)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 37 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13E72B: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:27)
+==2799==    by 0x13D8B8: MlModule::trainMlModel(char const*) (mlModule.cpp:289)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 38 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13E560: relu_layer_t::relu_layer_t(point_t) (relu_layer_t.h:17)
+==2799==    by 0x13D915: MlModule::trainMlModel(char const*) (mlModule.cpp:290)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 39 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13E578: relu_layer_t::relu_layer_t(point_t) (relu_layer_t.h:17)
+==2799==    by 0x13D915: MlModule::trainMlModel(char const*) (mlModule.cpp:290)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 40 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13E590: relu_layer_t::relu_layer_t(point_t) (relu_layer_t.h:17)
+==2799==    by 0x13D915: MlModule::trainMlModel(char const*) (mlModule.cpp:290)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 41 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13E2DD: pool_layer_t::pool_layer_t(unsigned short, unsigned short, point_t) (pool_layer_t.h:22)
+==2799==    by 0x13D97D: MlModule::trainMlModel(char const*) (mlModule.cpp:291)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 42 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13E2F5: pool_layer_t::pool_layer_t(unsigned short, unsigned short, point_t) (pool_layer_t.h:22)
+==2799==    by 0x13D97D: MlModule::trainMlModel(char const*) (mlModule.cpp:291)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 43 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13EAC1: conv_layer_t::conv_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >, unsigned short, unsigned short) (conv_layer_t.h:60)
+==2799==    by 0x13D07D: load_network(char const*) (mlModule.cpp:197)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 44 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13E607: relu_layer_t::relu_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&) (relu_layer_t.h:23)
+==2799==    by 0x13D1CD: load_network(char const*) (mlModule.cpp:211)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 45 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13E61E: relu_layer_t::relu_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&) (relu_layer_t.h:23)
+==2799==    by 0x13D1CD: load_network(char const*) (mlModule.cpp:211)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 46 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13E635: relu_layer_t::relu_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&) (relu_layer_t.h:23)
+==2799==    by 0x13D1CD: load_network(char const*) (mlModule.cpp:211)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 47 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13E4A3: pool_layer_t::pool_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, unsigned short, unsigned short) (pool_layer_t.h:37)
+==2799==    by 0x13D383: load_network(char const*) (mlModule.cpp:233)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 18,432 bytes in 1 blocks are definitely lost in loss record 48 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13E4BA: pool_layer_t::pool_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, unsigned short, unsigned short) (pool_layer_t.h:37)
+==2799==    by 0x13D383: load_network(char const*) (mlModule.cpp:233)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 46,080 bytes in 1 blocks are definitely lost in loss record 49 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C676: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2799==    by 0x13DE57: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:23)
+==2799==    by 0x13D9DF: MlModule::trainMlModel(char const*) (mlModule.cpp:292)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== 46,080 bytes in 1 blocks are definitely lost in loss record 50 of 50
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x13E111: fc_layer_t::fc_layer_t(tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&, tensor_t<float> const&) (fc_layer.h:39)
+==2799==    by 0x13CE0D: load_network(char const*) (mlModule.cpp:166)
+==2799==    by 0x13DC4F: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:325)
+==2799==    by 0x12FB6E: unitTestCNN() (unitTest.cpp:232)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== LEAK SUMMARY:
+==2799==    definitely lost: 354,864 bytes in 37 blocks
+==2799==    indirectly lost: 3,200 bytes in 24 blocks
+==2799==      possibly lost: 0 bytes in 0 blocks
+==2799==    still reachable: 536 bytes in 6 blocks
+==2799==         suppressed: 0 bytes in 0 blocks
+==2799== 
+==2799== ERROR SUMMARY: 821 errors from 38 contexts (suppressed: 0 from 0)
+==2799== 
+==2799== 784 errors in context 1 of 38:
+==2799== Invalid read of size 4
+==2799==    at 0x127DB7: tensor_to_string(tensor_t<float>&) (tensor_t.h:118)
+==2799==    by 0x12BE5E: conv_layer_t::toString[abi:cxx11]() (conv_layer_t.h:174)
+==2799==    by 0x13C1C9: toString(layer_t*) (cnn.h:80)
+==2799==    by 0x13CB22: save_network(std::vector<layer_t*, std::allocator<layer_t*> > const&, char const*) (mlModule.cpp:125)
+==2799==    by 0x13DC16: MlModule::saveMlModel(char const*) (mlModule.cpp:320)
+==2799==    by 0x12FB2F: unitTestCNN() (unitTest.cpp:228)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799==  Address 0xdfe7e70 is 0 bytes inside a block of size 3,136 free'd
+==2799==    at 0x4C31B16: operator delete[](void*) (vg_replace_malloc.c:651)
+==2799==    by 0x12C6C8: tensor_t<float>::~tensor_t() (tensor_t.h:76)
+==2799==    by 0x13EBAB: case_t::~case_t() (mlModule.cpp:24)
+==2799==    by 0x143772: void std::_Destroy<case_t>(case_t*) (stl_construct.h:98)
+==2799==    by 0x143046: void std::_Destroy_aux<false>::__destroy<case_t*>(case_t*, case_t*) (stl_construct.h:108)
+==2799==    by 0x141E33: void std::_Destroy<case_t*>(case_t*, case_t*) (stl_construct.h:137)
+==2799==    by 0x140816: void std::_Destroy<case_t*, case_t>(case_t*, case_t*, std::allocator<case_t>&) (stl_construct.h:206)
+==2799==    by 0x13F33E: std::vector<case_t, std::allocator<case_t> >::~vector() (stl_vector.h:434)
+==2799==    by 0x13DB60: MlModule::trainMlModel(char const*) (mlModule.cpp:286)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799==  Block was alloc'd at
+==2799==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2799==    by 0x12C797: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2799==    by 0x141E5B: case_t::case_t(case_t const&) (mlModule.cpp:24)
+==2799==    by 0x141EE5: void __gnu_cxx::new_allocator<case_t>::construct<case_t, case_t const&>(case_t*, case_t const&) (new_allocator.h:136)
+==2799==    by 0x14085D: void std::allocator_traits<std::allocator<case_t> >::construct<case_t, case_t const&>(std::allocator<case_t>&, case_t*, case_t const&) (alloc_traits.h:475)
+==2799==    by 0x13F38D: std::vector<case_t, std::allocator<case_t> >::push_back(case_t const&) (stl_vector.h:943)
+==2799==    by 0x13C607: read_test_cases() (mlModule.cpp:67)
+==2799==    by 0x13D85D: MlModule::trainMlModel(char const*) (mlModule.cpp:286)
+==2799==    by 0x12FAF0: unitTestCNN() (unitTest.cpp:224)
+==2799==    by 0x12EA08: runUnitTest() (unitTest.cpp:49)
+==2799==    by 0x1288C3: main (main.cpp:36)
+==2799== 
+==2799== ERROR SUMMARY: 821 errors from 38 contexts (suppressed: 0 from 0)

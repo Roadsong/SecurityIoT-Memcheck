@@ -1,0 +1,217 @@
+==16129== Memcheck, a memory error detector
+==16129== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==16129== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==16129== Command: ./embeddedlab
+==16129== Parent PID: 7364
+==16129== 
+==16129== Invalid read of size 1
+==16129==    at 0x1389F4: BlockCopy(unsigned char*, unsigned char*) (aes.cpp:421)
+==16129==    by 0x138BD5: AES128_CBC_encrypt_buffer(unsigned char*, unsigned char*, unsigned int, unsigned char const*, unsigned char const*) (aes.cpp:486)
+==16129==    by 0x138FCA: CryptoUtil::secureEncryptFile(char*, char*) (cryptoUtil.cpp:82)
+==16129==    by 0x155068: SVMModule::makeInference(char const*) (mlModule.cpp:792)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129==  Address 0x5e0b2a0 is 0 bytes after a block of size 0 alloc'd
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x138F6A: CryptoUtil::secureEncryptFile(char*, char*) (cryptoUtil.cpp:71)
+==16129==    by 0x155068: SVMModule::makeInference(char const*) (mlModule.cpp:792)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== Invalid write of size 1
+==16129==    at 0x1389F7: BlockCopy(unsigned char*, unsigned char*) (aes.cpp:421)
+==16129==    by 0x138BD5: AES128_CBC_encrypt_buffer(unsigned char*, unsigned char*, unsigned int, unsigned char const*, unsigned char const*) (aes.cpp:486)
+==16129==    by 0x138FCA: CryptoUtil::secureEncryptFile(char*, char*) (cryptoUtil.cpp:82)
+==16129==    by 0x155068: SVMModule::makeInference(char const*) (mlModule.cpp:792)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129==  Address 0x5e0cf90 is 0 bytes after a block of size 0 alloc'd
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x138F79: CryptoUtil::secureEncryptFile(char*, char*) (cryptoUtil.cpp:72)
+==16129==    by 0x155068: SVMModule::makeInference(char const*) (mlModule.cpp:792)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 
+==16129== HEAP SUMMARY:
+==16129==     in use at exit: 411,992 bytes in 17 blocks
+==16129==   total heap usage: 125,058 allocs, 125,041 frees, 313,331,587 bytes allocated
+==16129== 
+==16129== 32 bytes in 2 blocks are still reachable in loss record 1 of 14
+==16129==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==16129==    by 0x140F53: __gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==16129==    by 0x140047: std::allocator_traits<std::allocator<double> >::allocate(std::allocator<double>&, unsigned long) (alloc_traits.h:436)
+==16129==    by 0x13E713: std::_Vector_base<double, std::allocator<double> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==16129==    by 0x13EBCA: std::_Vector_base<double, std::allocator<double> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==16129==    by 0x13CD54: std::_Vector_base<double, std::allocator<double> >::_Vector_base(unsigned long, std::allocator<double> const&) (stl_vector.h:138)
+==16129==    by 0x13B44C: std::vector<double, std::allocator<double> >::vector(std::vector<double, std::allocator<double> > const&) (stl_vector.h:328)
+==16129==    by 0x15C10B: Cluster::Cluster(Cluster const&) (kmeans.h:46)
+==16129==    by 0x15C195: void std::_Construct<Cluster, Cluster const&>(Cluster*, Cluster const&) (stl_construct.h:75)
+==16129==    by 0x15B451: Cluster* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*) (stl_uninitialized.h:83)
+==16129==    by 0x159F1D: Cluster* std::uninitialized_copy<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*) (stl_uninitialized.h:134)
+==16129==    by 0x158614: Cluster* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*, Cluster>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*, std::allocator<Cluster>&) (stl_uninitialized.h:289)
+==16129== 
+==16129== 32 bytes in 2 blocks are still reachable in loss record 2 of 14
+==16129==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==16129==    by 0x140F53: __gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==16129==    by 0x140047: std::allocator_traits<std::allocator<double> >::allocate(std::allocator<double>&, unsigned long) (alloc_traits.h:436)
+==16129==    by 0x13E713: std::_Vector_base<double, std::allocator<double> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==16129==    by 0x13EBCA: std::_Vector_base<double, std::allocator<double> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==16129==    by 0x13CD54: std::_Vector_base<double, std::allocator<double> >::_Vector_base(unsigned long, std::allocator<double> const&) (stl_vector.h:138)
+==16129==    by 0x13B44C: std::vector<double, std::allocator<double> >::vector(std::vector<double, std::allocator<double> > const&) (stl_vector.h:328)
+==16129==    by 0x13AC66: Point::Point(Point const&) (kmeans.h:26)
+==16129==    by 0x15D395: void std::_Construct<Point, Point const&>(Point*, Point const&) (stl_construct.h:75)
+==16129==    by 0x15D1EC: Point* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*>(__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*) (stl_uninitialized.h:83)
+==16129==    by 0x15D054: Point* std::uninitialized_copy<__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*>(__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*) (stl_uninitialized.h:134)
+==16129==    by 0x15CDDC: Point* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*, Point>(__gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, __gnu_cxx::__normal_iterator<Point const*, std::vector<Point, std::allocator<Point> > >, Point*, std::allocator<Point>&) (stl_uninitialized.h:289)
+==16129== 
+==16129== 48 bytes in 1 blocks are still reachable in loss record 3 of 14
+==16129==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==16129==    by 0x15179A: MlModule::getInstance() (mlModule.cpp:10)
+==16129==    by 0x1372D5: unitTestKMeans() (unitTest.cpp:213)
+==16129==    by 0x136358: runUnitTest() (unitTest.cpp:54)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 80 bytes in 2 blocks are still reachable in loss record 4 of 14
+==16129==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==16129==    by 0x1410A9: __gnu_cxx::new_allocator<Point>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==16129==    by 0x140241: std::allocator_traits<std::allocator<Point> >::allocate(std::allocator<Point>&, unsigned long) (alloc_traits.h:436)
+==16129==    by 0x13EE2D: std::_Vector_base<Point, std::allocator<Point> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==16129==    by 0x15CFE4: std::_Vector_base<Point, std::allocator<Point> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==16129==    by 0x15CD8A: std::_Vector_base<Point, std::allocator<Point> >::_Vector_base(unsigned long, std::allocator<Point> const&) (stl_vector.h:138)
+==16129==    by 0x15C982: std::vector<Point, std::allocator<Point> >::vector(std::vector<Point, std::allocator<Point> > const&) (stl_vector.h:328)
+==16129==    by 0x15C126: Cluster::Cluster(Cluster const&) (kmeans.h:46)
+==16129==    by 0x15C195: void std::_Construct<Cluster, Cluster const&>(Cluster*, Cluster const&) (stl_construct.h:75)
+==16129==    by 0x15B451: Cluster* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*) (stl_uninitialized.h:83)
+==16129==    by 0x159F1D: Cluster* std::uninitialized_copy<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*) (stl_uninitialized.h:134)
+==16129==    by 0x158614: Cluster* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*, Cluster>(__gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, __gnu_cxx::__normal_iterator<Cluster const*, std::vector<Cluster, std::allocator<Cluster> > >, Cluster*, std::allocator<Cluster>&) (stl_uninitialized.h:289)
+==16129== 
+==16129== 112 bytes in 1 blocks are still reachable in loss record 5 of 14
+==16129==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==16129==    by 0x141343: __gnu_cxx::new_allocator<Cluster>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==16129==    by 0x1406C8: std::allocator_traits<std::allocator<Cluster> >::allocate(std::allocator<Cluster>&, unsigned long) (alloc_traits.h:436)
+==16129==    by 0x13F401: std::_Vector_base<Cluster, std::allocator<Cluster> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==16129==    by 0x159E90: std::_Vector_base<Cluster, std::allocator<Cluster> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==16129==    by 0x15851A: std::_Vector_base<Cluster, std::allocator<Cluster> >::_Vector_base(unsigned long, std::allocator<Cluster> const&) (stl_vector.h:138)
+==16129==    by 0x156C66: std::vector<Cluster, std::allocator<Cluster> >::vector(std::vector<Cluster, std::allocator<Cluster> > const&) (stl_vector.h:328)
+==16129==    by 0x151CB1: MlModule::loadSavedMlModel(char const*) (mlModule.cpp:62)
+==16129==    by 0x137365: unitTestKMeans() (unitTest.cpp:221)
+==16129==    by 0x136358: runUnitTest() (unitTest.cpp:54)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 168 bytes in 1 blocks are still reachable in loss record 6 of 14
+==16129==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==16129==    by 0x153E10: SVMModule::getInstance() (mlModule.cpp:478)
+==16129==    by 0x137437: unitTestSVM() (unitTest.cpp:239)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 552 bytes in 1 blocks are still reachable in loss record 7 of 14
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==16129==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==16129==    by 0x154813: SVMModule::makeInference(char const*) (mlModule.cpp:682)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 552 bytes in 1 blocks are still reachable in loss record 8 of 14
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==16129==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==16129==    by 0x15482A: SVMModule::makeInference(char const*) (mlModule.cpp:683)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 1,024 bytes in 1 blocks are still reachable in loss record 9 of 14
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x154842: SVMModule::makeInference(char const*) (mlModule.cpp:685)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 1,024 bytes in 1 blocks are still reachable in loss record 10 of 14
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x154A26: SVMModule::makeInference(char const*) (mlModule.cpp:714)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 1,024 bytes in 1 blocks are definitely lost in loss record 11 of 14
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x1540C5: SVMModule::trainSVMModel(char const*) (mlModule.cpp:552)
+==16129==    by 0x137449: unitTestSVM() (unitTest.cpp:239)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 12,840 bytes in 1 blocks are still reachable in loss record 12 of 14
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x154174: SVMModule::trainSVMModel(char const*) (mlModule.cpp:568)
+==16129==    by 0x137449: unitTestSVM() (unitTest.cpp:239)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 12,840 bytes in 1 blocks are still reachable in loss record 13 of 14
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x154194: SVMModule::trainSVMModel(char const*) (mlModule.cpp:569)
+==16129==    by 0x137449: unitTestSVM() (unitTest.cpp:239)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 381,664 bytes in 1 blocks are still reachable in loss record 14 of 14
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x1541AF: SVMModule::trainSVMModel(char const*) (mlModule.cpp:570)
+==16129==    by 0x137449: unitTestSVM() (unitTest.cpp:239)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== LEAK SUMMARY:
+==16129==    definitely lost: 1,024 bytes in 1 blocks
+==16129==    indirectly lost: 0 bytes in 0 blocks
+==16129==      possibly lost: 0 bytes in 0 blocks
+==16129==    still reachable: 410,968 bytes in 16 blocks
+==16129==         suppressed: 0 bytes in 0 blocks
+==16129== 
+==16129== ERROR SUMMARY: 33 errors from 3 contexts (suppressed: 0 from 0)
+==16129== 
+==16129== 16 errors in context 1 of 3:
+==16129== Invalid write of size 1
+==16129==    at 0x1389F7: BlockCopy(unsigned char*, unsigned char*) (aes.cpp:421)
+==16129==    by 0x138BD5: AES128_CBC_encrypt_buffer(unsigned char*, unsigned char*, unsigned int, unsigned char const*, unsigned char const*) (aes.cpp:486)
+==16129==    by 0x138FCA: CryptoUtil::secureEncryptFile(char*, char*) (cryptoUtil.cpp:82)
+==16129==    by 0x155068: SVMModule::makeInference(char const*) (mlModule.cpp:792)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129==  Address 0x5e0cf90 is 0 bytes after a block of size 0 alloc'd
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x138F79: CryptoUtil::secureEncryptFile(char*, char*) (cryptoUtil.cpp:72)
+==16129==    by 0x155068: SVMModule::makeInference(char const*) (mlModule.cpp:792)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== 
+==16129== 16 errors in context 2 of 3:
+==16129== Invalid read of size 1
+==16129==    at 0x1389F4: BlockCopy(unsigned char*, unsigned char*) (aes.cpp:421)
+==16129==    by 0x138BD5: AES128_CBC_encrypt_buffer(unsigned char*, unsigned char*, unsigned int, unsigned char const*, unsigned char const*) (aes.cpp:486)
+==16129==    by 0x138FCA: CryptoUtil::secureEncryptFile(char*, char*) (cryptoUtil.cpp:82)
+==16129==    by 0x155068: SVMModule::makeInference(char const*) (mlModule.cpp:792)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129==  Address 0x5e0b2a0 is 0 bytes after a block of size 0 alloc'd
+==16129==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==16129==    by 0x138F6A: CryptoUtil::secureEncryptFile(char*, char*) (cryptoUtil.cpp:71)
+==16129==    by 0x155068: SVMModule::makeInference(char const*) (mlModule.cpp:792)
+==16129==    by 0x137506: unitTestSVM() (unitTest.cpp:251)
+==16129==    by 0x13635D: runUnitTest() (unitTest.cpp:55)
+==16129==    by 0x1303D9: main (main.cpp:44)
+==16129== 
+==16129== ERROR SUMMARY: 33 errors from 3 contexts (suppressed: 0 from 0)
