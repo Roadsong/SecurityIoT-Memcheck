@@ -1,0 +1,774 @@
+==2737== Memcheck, a memory error detector
+==2737== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2737== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==2737== Command: ./embeddedlab
+==2737== Parent PID: 2218
+==2737== 
+==2737== Invalid read of size 8
+==2737==    at 0x13ED6A: train(std::vector<layer_t*, std::allocator<layer_t*> >&, tensor_t<float>&, tensor_t<float>&) (utils.h:77)
+==2737==    by 0x140272: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:62)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737==  Address 0xfffffffffffffff8 is not stack'd, malloc'd or (recently) free'd
+==2737== 
+==2737== 
+==2737== Process terminating with default action of signal 11 (SIGSEGV)
+==2737==  Access not within mapped region at address 0xFFFFFFFFFFFFFFF8
+==2737==    at 0x13ED6A: train(std::vector<layer_t*, std::allocator<layer_t*> >&, tensor_t<float>&, tensor_t<float>&) (utils.h:77)
+==2737==    by 0x140272: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:62)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737==  If you believe this happened as a result of a stack
+==2737==  overflow in your program's main thread (unlikely but
+==2737==  possible), you can try to increase the size of the
+==2737==  main thread stack using the --main-stacksize= flag.
+==2737==  The main thread stack size used in this run was 8388608.
+==2737== 
+==2737== HEAP SUMMARY:
+==2737==     in use at exit: 193,890,764 bytes in 120,088 blocks
+==2737==   total heap usage: 371,416 allocs, 251,328 frees, 961,871,607 bytes allocated
+==2737== 
+==2737== 32 bytes in 1 blocks are definitely lost in loss record 1 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x133E1C: CryptoUtil::secureEncryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:350)
+==2737==    by 0x134156: CryptoUtil::getRanDomKeyIv(char const*, char const*, char const*) (cryptoUtil.cpp:417)
+==2737==    by 0x131289: unitTestCNN() (unitTest.cpp:219)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 40 bytes in 1 blocks are still reachable in loss record 2 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x144BB6: case_t::case_t(case_t const&) (utils.h:9)
+==2737==    by 0x144C25: void __gnu_cxx::new_allocator<case_t>::construct<case_t, case_t const&>(case_t*, case_t const&) (new_allocator.h:136)
+==2737==    by 0x143593: void std::allocator_traits<std::allocator<case_t> >::construct<case_t, case_t const&>(std::allocator<case_t>&, case_t*, case_t const&) (alloc_traits.h:475)
+==2737==    by 0x14365C: void std::vector<case_t, std::allocator<case_t> >::_M_realloc_insert<case_t const&>(__gnu_cxx::__normal_iterator<case_t*, std::vector<case_t, std::allocator<case_t> > >, case_t const&) (vector.tcc:415)
+==2737==    by 0x1420F9: std::vector<case_t, std::allocator<case_t> >::push_back(case_t const&) (stl_vector.h:948)
+==2737==    by 0x13EB4B: read_test_cases(char const*, char const*) (utils.h:52)
+==2737==    by 0x13FEC9: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:45)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 40 bytes in 1 blocks are definitely lost in loss record 3 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x140BC5: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:23)
+==2737==    by 0x140178: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:54)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 40 bytes in 1 blocks are definitely lost in loss record 4 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x12F0BF: __gnu_cxx::new_allocator<float>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2737==    by 0x12EE12: std::allocator_traits<std::allocator<float> >::allocate(std::allocator<float>&, unsigned long) (alloc_traits.h:436)
+==2737==    by 0x12EA07: std::_Vector_base<float, std::allocator<float> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2737==    by 0x1440B4: std::_Vector_base<float, std::allocator<float> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==2737==    by 0x142A02: std::_Vector_base<float, std::allocator<float> >::_Vector_base(unsigned long, std::allocator<float> const&) (stl_vector.h:138)
+==2737==    by 0x141B7F: std::vector<float, std::allocator<float> >::vector(unsigned long, std::allocator<float> const&) (stl_vector.h:284)
+==2737==    by 0x140C30: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:25)
+==2737==    by 0x140178: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:54)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 48 bytes in 1 blocks are still reachable in loss record 5 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x13FD44: MlModule::getInstance() (mlModule.cpp:11)
+==2737==    by 0x13140F: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 48 bytes in 1 blocks are definitely lost in loss record 6 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x133F7A: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:384)
+==2737==    by 0x13388C: CryptoUtil::secureEncryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:198)
+==2737==    by 0x131373: unitTestCNN() (unitTest.cpp:239)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 48 bytes in 1 blocks are definitely lost in loss record 7 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x133F7A: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:384)
+==2737==    by 0x13388C: CryptoUtil::secureEncryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:198)
+==2737==    by 0x13139B: unitTestCNN() (unitTest.cpp:240)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 48 bytes in 1 blocks are definitely lost in loss record 8 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x133F7A: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:384)
+==2737==    by 0x13388C: CryptoUtil::secureEncryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:198)
+==2737==    by 0x1313C0: unitTestCNN() (unitTest.cpp:242)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 48 bytes in 1 blocks are definitely lost in loss record 9 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x133F7A: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:384)
+==2737==    by 0x13388C: CryptoUtil::secureEncryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:198)
+==2737==    by 0x1313E5: unitTestCNN() (unitTest.cpp:243)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 48 bytes in 1 blocks are definitely lost in loss record 10 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x133F7A: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:384)
+==2737==    by 0x13388C: CryptoUtil::secureEncryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:198)
+==2737==    by 0x13140A: unitTestCNN() (unitTest.cpp:244)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 48 bytes in 1 blocks are definitely lost in loss record 11 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x133F7A: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:384)
+==2737==    by 0x133BA5: CryptoUtil::secureDecryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:270)
+==2737==    by 0x13FE7E: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:42)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 48 bytes in 1 blocks are definitely lost in loss record 12 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x133F7A: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:384)
+==2737==    by 0x133BA5: CryptoUtil::secureDecryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:270)
+==2737==    by 0x13FEAC: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:43)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 76 bytes in 1 blocks are definitely lost in loss record 13 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x13FF6C: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:49)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 76 bytes in 1 blocks are definitely lost in loss record 14 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x14009B: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:52)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 80 bytes in 1 blocks are definitely lost in loss record 15 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x13FFC7: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:50)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 80 bytes in 1 blocks are definitely lost in loss record 16 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x1400F6: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:53)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 80 bytes in 1 blocks are definitely lost in loss record 17 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x14682F: __gnu_cxx::new_allocator<gradient_t>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2737==    by 0x1462A6: std::allocator_traits<std::allocator<gradient_t> >::allocate(std::allocator<gradient_t>&, unsigned long) (alloc_traits.h:436)
+==2737==    by 0x1457C5: std::_Vector_base<gradient_t, std::allocator<gradient_t> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2737==    by 0x144288: std::_Vector_base<gradient_t, std::allocator<gradient_t> >::_M_create_storage(unsigned long) (stl_vector.h:187)
+==2737==    by 0x142B82: std::_Vector_base<gradient_t, std::allocator<gradient_t> >::_Vector_base(unsigned long, std::allocator<gradient_t> const&) (stl_vector.h:138)
+==2737==    by 0x141C91: std::vector<gradient_t, std::allocator<gradient_t> >::vector(unsigned long, std::allocator<gradient_t> const&) (stl_vector.h:284)
+==2737==    by 0x140C84: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:26)
+==2737==    by 0x140178: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:54)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 100 bytes in 1 blocks are indirectly lost in loss record 18 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x14458B: void __gnu_cxx::new_allocator<tensor_t<float> >::construct<tensor_t<float>, tensor_t<float> const&>(tensor_t<float>*, tensor_t<float> const&) (new_allocator.h:136)
+==2737==    by 0x142E97: void std::allocator_traits<std::allocator<tensor_t<float> > >::construct<tensor_t<float>, tensor_t<float> const&>(std::allocator<tensor_t<float> >&, tensor_t<float>*, tensor_t<float> const&) (alloc_traits.h:475)
+==2737==    by 0x142F60: void std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_realloc_insert<tensor_t<float> const&>(__gnu_cxx::__normal_iterator<tensor_t<float>*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float> const&) (vector.tcc:415)
+==2737==    by 0x141E77: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:948)
+==2737==    by 0x1416CD: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2737==    by 0x13FF28: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 128 bytes in 1 blocks are definitely lost in loss record 19 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x13FEFE: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 128 bytes in 1 blocks are definitely lost in loss record 20 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x14002D: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 148 bytes in 1 blocks are still reachable in loss record 21 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x14015C: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:54)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 200 bytes in 1 blocks are indirectly lost in loss record 22 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x145B31: tensor_t<gradient_t>::tensor_t(tensor_t<gradient_t> const&) (tensor_t.h:26)
+==2737==    by 0x1447ED: void __gnu_cxx::new_allocator<tensor_t<gradient_t> >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (new_allocator.h:136)
+==2737==    by 0x143184: void std::allocator_traits<std::allocator<tensor_t<gradient_t> > >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(std::allocator<tensor_t<gradient_t> >&, tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (alloc_traits.h:475)
+==2737==    by 0x14324C: void std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_realloc_insert<tensor_t<gradient_t> const&>(__gnu_cxx::__normal_iterator<tensor_t<gradient_t>*, std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > > >, tensor_t<gradient_t> const&) (vector.tcc:415)
+==2737==    by 0x141FD7: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:948)
+==2737==    by 0x141724: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2737==    by 0x13FF28: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 288 bytes in 1 blocks are indirectly lost in loss record 23 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x14458B: void __gnu_cxx::new_allocator<tensor_t<float> >::construct<tensor_t<float>, tensor_t<float> const&>(tensor_t<float>*, tensor_t<float> const&) (new_allocator.h:136)
+==2737==    by 0x142E97: void std::allocator_traits<std::allocator<tensor_t<float> > >::construct<tensor_t<float>, tensor_t<float> const&>(std::allocator<tensor_t<float> >&, tensor_t<float>*, tensor_t<float> const&) (alloc_traits.h:475)
+==2737==    by 0x142F60: void std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_realloc_insert<tensor_t<float> const&>(__gnu_cxx::__normal_iterator<tensor_t<float>*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float> const&) (vector.tcc:415)
+==2737==    by 0x141E77: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:948)
+==2737==    by 0x1416CD: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2737==    by 0x140057: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 288 bytes in 1 blocks are indirectly lost in loss record 24 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x14458B: void __gnu_cxx::new_allocator<tensor_t<float> >::construct<tensor_t<float>, tensor_t<float> const&>(tensor_t<float>*, tensor_t<float> const&) (new_allocator.h:136)
+==2737==    by 0x142E97: void std::allocator_traits<std::allocator<tensor_t<float> > >::construct<tensor_t<float>, tensor_t<float> const&>(std::allocator<tensor_t<float> >&, tensor_t<float>*, tensor_t<float> const&) (alloc_traits.h:475)
+==2737==    by 0x141E3F: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:943)
+==2737==    by 0x1416CD: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2737==    by 0x140057: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 300 bytes in 3 blocks are indirectly lost in loss record 25 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x14458B: void __gnu_cxx::new_allocator<tensor_t<float> >::construct<tensor_t<float>, tensor_t<float> const&>(tensor_t<float>*, tensor_t<float> const&) (new_allocator.h:136)
+==2737==    by 0x142E97: void std::allocator_traits<std::allocator<tensor_t<float> > >::construct<tensor_t<float>, tensor_t<float> const&>(std::allocator<tensor_t<float> >&, tensor_t<float>*, tensor_t<float> const&) (alloc_traits.h:475)
+==2737==    by 0x141E3F: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:943)
+==2737==    by 0x1416CD: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2737==    by 0x13FF28: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 400 bytes in 4 blocks are indirectly lost in loss record 26 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x146736: void std::_Construct<tensor_t<float>, tensor_t<float> const&>(tensor_t<float>*, tensor_t<float> const&) (stl_construct.h:75)
+==2737==    by 0x1468C6: tensor_t<float>* std::__uninitialized_copy<false>::__uninit_copy<tensor_t<float> const*, tensor_t<float>*>(tensor_t<float> const*, tensor_t<float> const*, tensor_t<float>*) (stl_uninitialized.h:83)
+==2737==    by 0x146415: tensor_t<float>* std::uninitialized_copy<tensor_t<float> const*, tensor_t<float>*>(tensor_t<float> const*, tensor_t<float> const*, tensor_t<float>*) (stl_uninitialized.h:134)
+==2737==    by 0x145A90: tensor_t<float>* std::__uninitialized_copy_a<tensor_t<float> const*, tensor_t<float>*, tensor_t<float> >(tensor_t<float> const*, tensor_t<float> const*, tensor_t<float>*, std::allocator<tensor_t<float> >&) (stl_uninitialized.h:289)
+==2737==    by 0x144773: tensor_t<float>* std::__uninitialized_move_if_noexcept_a<tensor_t<float>*, tensor_t<float>*, std::allocator<tensor_t<float> > >(tensor_t<float>*, tensor_t<float>*, tensor_t<float>*, std::allocator<tensor_t<float> >&) (stl_uninitialized.h:312)
+==2737==    by 0x142F9C: void std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_realloc_insert<tensor_t<float> const&>(__gnu_cxx::__normal_iterator<tensor_t<float>*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float> const&) (vector.tcc:424)
+==2737==    by 0x141E77: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:948)
+==2737==    by 0x1416CD: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2737==    by 0x13FF28: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737== 
+==2737== 552 bytes in 1 blocks are still reachable in loss record 27 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==2737==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==2737==    by 0x133F0D: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:372)
+==2737==    by 0x13388C: CryptoUtil::secureEncryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:198)
+==2737==    by 0x131373: unitTestCNN() (unitTest.cpp:239)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 552 bytes in 1 blocks are still reachable in loss record 28 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==2737==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==2737==    by 0x133F0D: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:372)
+==2737==    by 0x13388C: CryptoUtil::secureEncryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:198)
+==2737==    by 0x13139B: unitTestCNN() (unitTest.cpp:240)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 552 bytes in 1 blocks are still reachable in loss record 29 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==2737==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==2737==    by 0x133F0D: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:372)
+==2737==    by 0x13388C: CryptoUtil::secureEncryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:198)
+==2737==    by 0x1313C0: unitTestCNN() (unitTest.cpp:242)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 552 bytes in 1 blocks are still reachable in loss record 30 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==2737==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==2737==    by 0x133F0D: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:372)
+==2737==    by 0x13388C: CryptoUtil::secureEncryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:198)
+==2737==    by 0x1313E5: unitTestCNN() (unitTest.cpp:243)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 552 bytes in 1 blocks are still reachable in loss record 31 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==2737==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==2737==    by 0x133F0D: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:372)
+==2737==    by 0x13388C: CryptoUtil::secureEncryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:198)
+==2737==    by 0x13140A: unitTestCNN() (unitTest.cpp:244)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 552 bytes in 1 blocks are still reachable in loss record 32 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==2737==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==2737==    by 0x133F0D: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:372)
+==2737==    by 0x133BA5: CryptoUtil::secureDecryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:270)
+==2737==    by 0x13FE7E: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:42)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 552 bytes in 1 blocks are still reachable in loss record 33 of 70
+==2737==    at 0x4C2FDFB: malloc (vg_replace_malloc.c:309)
+==2737==    by 0x57FAE49: __fopen_internal (iofopen.c:65)
+==2737==    by 0x57FAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==2737==    by 0x133F0D: CryptoUtil::secureDecryptKeyFile(char*, char const*, unsigned char*, unsigned char*) (cryptoUtil.cpp:372)
+==2737==    by 0x133BA5: CryptoUtil::secureDecryptFileRandom(char*, char*, char const*, char const*, char const*) (cryptoUtil.cpp:270)
+==2737==    by 0x13FEAC: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:43)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 576 bytes in 1 blocks are indirectly lost in loss record 34 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x145B31: tensor_t<gradient_t>::tensor_t(tensor_t<gradient_t> const&) (tensor_t.h:26)
+==2737==    by 0x1447ED: void __gnu_cxx::new_allocator<tensor_t<gradient_t> >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (new_allocator.h:136)
+==2737==    by 0x143184: void std::allocator_traits<std::allocator<tensor_t<gradient_t> > >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(std::allocator<tensor_t<gradient_t> >&, tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (alloc_traits.h:475)
+==2737==    by 0x14324C: void std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_realloc_insert<tensor_t<gradient_t> const&>(__gnu_cxx::__normal_iterator<tensor_t<gradient_t>*, std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > > >, tensor_t<gradient_t> const&) (vector.tcc:415)
+==2737==    by 0x141FD7: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:948)
+==2737==    by 0x141724: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2737==    by 0x140057: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 576 bytes in 1 blocks are indirectly lost in loss record 35 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x145B31: tensor_t<gradient_t>::tensor_t(tensor_t<gradient_t> const&) (tensor_t.h:26)
+==2737==    by 0x1447ED: void __gnu_cxx::new_allocator<tensor_t<gradient_t> >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (new_allocator.h:136)
+==2737==    by 0x143184: void std::allocator_traits<std::allocator<tensor_t<gradient_t> > >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(std::allocator<tensor_t<gradient_t> >&, tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (alloc_traits.h:475)
+==2737==    by 0x141F9F: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:943)
+==2737==    by 0x141724: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2737==    by 0x140057: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 600 bytes in 3 blocks are indirectly lost in loss record 36 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x145B31: tensor_t<gradient_t>::tensor_t(tensor_t<gradient_t> const&) (tensor_t.h:26)
+==2737==    by 0x1447ED: void __gnu_cxx::new_allocator<tensor_t<gradient_t> >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (new_allocator.h:136)
+==2737==    by 0x143184: void std::allocator_traits<std::allocator<tensor_t<gradient_t> > >::construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(std::allocator<tensor_t<gradient_t> >&, tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (alloc_traits.h:475)
+==2737==    by 0x141F9F: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:943)
+==2737==    by 0x141724: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2737==    by 0x13FF28: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 800 bytes in 4 blocks are indirectly lost in loss record 37 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x145B31: tensor_t<gradient_t>::tensor_t(tensor_t<gradient_t> const&) (tensor_t.h:26)
+==2737==    by 0x146B57: void std::_Construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (stl_construct.h:75)
+==2737==    by 0x14696C: tensor_t<gradient_t>* std::__uninitialized_copy<false>::__uninit_copy<tensor_t<gradient_t> const*, tensor_t<gradient_t>*>(tensor_t<gradient_t> const*, tensor_t<gradient_t> const*, tensor_t<gradient_t>*) (stl_uninitialized.h:83)
+==2737==    by 0x1464B9: tensor_t<gradient_t>* std::uninitialized_copy<tensor_t<gradient_t> const*, tensor_t<gradient_t>*>(tensor_t<gradient_t> const*, tensor_t<gradient_t> const*, tensor_t<gradient_t>*) (stl_uninitialized.h:134)
+==2737==    by 0x145CA3: tensor_t<gradient_t>* std::__uninitialized_copy_a<tensor_t<gradient_t> const*, tensor_t<gradient_t>*, tensor_t<gradient_t> >(tensor_t<gradient_t> const*, tensor_t<gradient_t> const*, tensor_t<gradient_t>*, std::allocator<tensor_t<gradient_t> >&) (stl_uninitialized.h:289)
+==2737==    by 0x1449D5: tensor_t<gradient_t>* std::__uninitialized_move_if_noexcept_a<tensor_t<gradient_t>*, tensor_t<gradient_t>*, std::allocator<tensor_t<gradient_t> > >(tensor_t<gradient_t>*, tensor_t<gradient_t>*, tensor_t<gradient_t>*, std::allocator<tensor_t<gradient_t> >&) (stl_uninitialized.h:312)
+==2737==    by 0x143288: void std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_realloc_insert<tensor_t<gradient_t> const&>(__gnu_cxx::__normal_iterator<tensor_t<gradient_t>*, std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > > >, tensor_t<gradient_t> const&) (vector.tcc:424)
+==2737==    by 0x141FD7: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:948)
+==2737==    by 0x141724: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2737==    by 0x13FF28: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737== 
+==2737== 992 (192 direct, 800 indirect) bytes in 1 blocks are definitely lost in loss record 38 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x1463E4: __gnu_cxx::new_allocator<tensor_t<float> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2737==    by 0x145A51: std::allocator_traits<std::allocator<tensor_t<float> > >::allocate(std::allocator<tensor_t<float> >&, unsigned long) (alloc_traits.h:436)
+==2737==    by 0x14471D: std::_Vector_base<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2737==    by 0x142F17: void std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_realloc_insert<tensor_t<float> const&>(__gnu_cxx::__normal_iterator<tensor_t<float>*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float> const&) (vector.tcc:406)
+==2737==    by 0x141E77: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:948)
+==2737==    by 0x1416CD: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2737==    by 0x13FF28: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 1,000 bytes in 1 blocks are definitely lost in loss record 39 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x1410D7: pool_layer_t::pool_layer_t(unsigned short, unsigned short, point_t) (pool_layer_t.h:22)
+==2737==    by 0x140118: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:53)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 1,000 bytes in 1 blocks are definitely lost in loss record 40 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x140B91: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:23)
+==2737==    by 0x140178: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:54)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 1,000 bytes in 1 blocks are definitely lost in loss record 41 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x140BA9: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:23)
+==2737==    by 0x140178: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:54)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 1,792 (192 direct, 1,600 indirect) bytes in 1 blocks are definitely lost in loss record 42 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x146488: __gnu_cxx::new_allocator<tensor_t<gradient_t> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2737==    by 0x145C64: std::allocator_traits<std::allocator<tensor_t<gradient_t> > >::allocate(std::allocator<tensor_t<gradient_t> >&, unsigned long) (alloc_traits.h:436)
+==2737==    by 0x14497F: std::_Vector_base<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2737==    by 0x143203: void std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_realloc_insert<tensor_t<gradient_t> const&>(__gnu_cxx::__normal_iterator<tensor_t<gradient_t>*, std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > > >, tensor_t<gradient_t> const&) (vector.tcc:406)
+==2737==    by 0x141FD7: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:948)
+==2737==    by 0x141724: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2737==    by 0x13FF28: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 2,304 bytes in 8 blocks are indirectly lost in loss record 43 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x146736: void std::_Construct<tensor_t<float>, tensor_t<float> const&>(tensor_t<float>*, tensor_t<float> const&) (stl_construct.h:75)
+==2737==    by 0x1468C6: tensor_t<float>* std::__uninitialized_copy<false>::__uninit_copy<tensor_t<float> const*, tensor_t<float>*>(tensor_t<float> const*, tensor_t<float> const*, tensor_t<float>*) (stl_uninitialized.h:83)
+==2737==    by 0x146415: tensor_t<float>* std::uninitialized_copy<tensor_t<float> const*, tensor_t<float>*>(tensor_t<float> const*, tensor_t<float> const*, tensor_t<float>*) (stl_uninitialized.h:134)
+==2737==    by 0x145A90: tensor_t<float>* std::__uninitialized_copy_a<tensor_t<float> const*, tensor_t<float>*, tensor_t<float> >(tensor_t<float> const*, tensor_t<float> const*, tensor_t<float>*, std::allocator<tensor_t<float> >&) (stl_uninitialized.h:289)
+==2737==    by 0x144773: tensor_t<float>* std::__uninitialized_move_if_noexcept_a<tensor_t<float>*, tensor_t<float>*, std::allocator<tensor_t<float> > >(tensor_t<float>*, tensor_t<float>*, tensor_t<float>*, std::allocator<tensor_t<float> >&) (stl_uninitialized.h:312)
+==2737==    by 0x142F9C: void std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_realloc_insert<tensor_t<float> const&>(__gnu_cxx::__normal_iterator<tensor_t<float>*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float> const&) (vector.tcc:424)
+==2737==    by 0x141E77: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:948)
+==2737==    by 0x1416CD: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2737==    by 0x140057: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737== 
+==2737== 3,136 bytes in 1 blocks are still reachable in loss record 44 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x144B9B: case_t::case_t(case_t const&) (utils.h:9)
+==2737==    by 0x144C25: void __gnu_cxx::new_allocator<case_t>::construct<case_t, case_t const&>(case_t*, case_t const&) (new_allocator.h:136)
+==2737==    by 0x143593: void std::allocator_traits<std::allocator<case_t> >::construct<case_t, case_t const&>(std::allocator<case_t>&, case_t*, case_t const&) (alloc_traits.h:475)
+==2737==    by 0x14365C: void std::vector<case_t, std::allocator<case_t> >::_M_realloc_insert<case_t const&>(__gnu_cxx::__normal_iterator<case_t*, std::vector<case_t, std::allocator<case_t> > >, case_t const&) (vector.tcc:415)
+==2737==    by 0x1420F9: std::vector<case_t, std::allocator<case_t> >::push_back(case_t const&) (stl_vector.h:948)
+==2737==    by 0x13EB4B: read_test_cases(char const*, char const*) (utils.h:52)
+==2737==    by 0x13FEC9: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:45)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 3,136 bytes in 1 blocks are definitely lost in loss record 45 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141478: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:27)
+==2737==    by 0x13FF28: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 3,136 bytes in 1 blocks are definitely lost in loss record 46 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141490: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:27)
+==2737==    by 0x13FF28: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 3,264 (384 direct, 2,880 indirect) bytes in 1 blocks are definitely lost in loss record 47 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x1463E4: __gnu_cxx::new_allocator<tensor_t<float> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2737==    by 0x145A51: std::allocator_traits<std::allocator<tensor_t<float> > >::allocate(std::allocator<tensor_t<float> >&, unsigned long) (alloc_traits.h:436)
+==2737==    by 0x14471D: std::_Vector_base<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2737==    by 0x142F17: void std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::_M_realloc_insert<tensor_t<float> const&>(__gnu_cxx::__normal_iterator<tensor_t<float>*, std::vector<tensor_t<float>, std::allocator<tensor_t<float> > > >, tensor_t<float> const&) (vector.tcc:406)
+==2737==    by 0x141E77: std::vector<tensor_t<float>, std::allocator<tensor_t<float> > >::push_back(tensor_t<float> const&) (stl_vector.h:948)
+==2737==    by 0x1416CD: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:47)
+==2737==    by 0x140057: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 4,000 bytes in 1 blocks are definitely lost in loss record 48 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x1414CF: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:27)
+==2737==    by 0x140057: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 4,000 bytes in 1 blocks are definitely lost in loss record 49 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141304: relu_layer_t::relu_layer_t(point_t) (relu_layer_t.h:17)
+==2737==    by 0x1400B2: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:52)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 4,000 bytes in 1 blocks are definitely lost in loss record 50 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x14131C: relu_layer_t::relu_layer_t(point_t) (relu_layer_t.h:17)
+==2737==    by 0x1400B2: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:52)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 4,000 bytes in 1 blocks are definitely lost in loss record 51 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141334: relu_layer_t::relu_layer_t(point_t) (relu_layer_t.h:17)
+==2737==    by 0x1400B2: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:52)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 4,000 bytes in 1 blocks are definitely lost in loss record 52 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141081: pool_layer_t::pool_layer_t(unsigned short, unsigned short, point_t) (pool_layer_t.h:22)
+==2737==    by 0x140118: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:53)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 4,000 bytes in 1 blocks are definitely lost in loss record 53 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141099: pool_layer_t::pool_layer_t(unsigned short, unsigned short, point_t) (pool_layer_t.h:22)
+==2737==    by 0x140118: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:53)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 4,608 bytes in 8 blocks are indirectly lost in loss record 54 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x145B31: tensor_t<gradient_t>::tensor_t(tensor_t<gradient_t> const&) (tensor_t.h:26)
+==2737==    by 0x146B57: void std::_Construct<tensor_t<gradient_t>, tensor_t<gradient_t> const&>(tensor_t<gradient_t>*, tensor_t<gradient_t> const&) (stl_construct.h:75)
+==2737==    by 0x14696C: tensor_t<gradient_t>* std::__uninitialized_copy<false>::__uninit_copy<tensor_t<gradient_t> const*, tensor_t<gradient_t>*>(tensor_t<gradient_t> const*, tensor_t<gradient_t> const*, tensor_t<gradient_t>*) (stl_uninitialized.h:83)
+==2737==    by 0x1464B9: tensor_t<gradient_t>* std::uninitialized_copy<tensor_t<gradient_t> const*, tensor_t<gradient_t>*>(tensor_t<gradient_t> const*, tensor_t<gradient_t> const*, tensor_t<gradient_t>*) (stl_uninitialized.h:134)
+==2737==    by 0x145CA3: tensor_t<gradient_t>* std::__uninitialized_copy_a<tensor_t<gradient_t> const*, tensor_t<gradient_t>*, tensor_t<gradient_t> >(tensor_t<gradient_t> const*, tensor_t<gradient_t> const*, tensor_t<gradient_t>*, std::allocator<tensor_t<gradient_t> >&) (stl_uninitialized.h:289)
+==2737==    by 0x1449D5: tensor_t<gradient_t>* std::__uninitialized_move_if_noexcept_a<tensor_t<gradient_t>*, tensor_t<gradient_t>*, std::allocator<tensor_t<gradient_t> > >(tensor_t<gradient_t>*, tensor_t<gradient_t>*, tensor_t<gradient_t>*, std::allocator<tensor_t<gradient_t> >&) (stl_uninitialized.h:312)
+==2737==    by 0x143288: void std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_realloc_insert<tensor_t<gradient_t> const&>(__gnu_cxx::__normal_iterator<tensor_t<gradient_t>*, std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > > >, tensor_t<gradient_t> const&) (vector.tcc:424)
+==2737==    by 0x141FD7: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:948)
+==2737==    by 0x141724: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2737==    by 0x140057: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737== 
+==2737== 4,608 bytes in 1 blocks are definitely lost in loss record 55 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x1410D7: pool_layer_t::pool_layer_t(unsigned short, unsigned short, point_t) (pool_layer_t.h:22)
+==2737==    by 0x13FFE9: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:50)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 4,608 bytes in 1 blocks are definitely lost in loss record 56 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141478: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:27)
+==2737==    by 0x140057: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 4,608 bytes in 1 blocks are definitely lost in loss record 57 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141490: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:27)
+==2737==    by 0x140057: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 6,144 (384 direct, 5,760 indirect) bytes in 1 blocks are definitely lost in loss record 58 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x146488: __gnu_cxx::new_allocator<tensor_t<gradient_t> >::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2737==    by 0x145C64: std::allocator_traits<std::allocator<tensor_t<gradient_t> > >::allocate(std::allocator<tensor_t<gradient_t> >&, unsigned long) (alloc_traits.h:436)
+==2737==    by 0x14497F: std::_Vector_base<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2737==    by 0x143203: void std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::_M_realloc_insert<tensor_t<gradient_t> const&>(__gnu_cxx::__normal_iterator<tensor_t<gradient_t>*, std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > > >, tensor_t<gradient_t> const&) (vector.tcc:406)
+==2737==    by 0x141FD7: std::vector<tensor_t<gradient_t>, std::allocator<tensor_t<gradient_t> > >::push_back(tensor_t<gradient_t> const&) (stl_vector.h:948)
+==2737==    by 0x141724: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:51)
+==2737==    by 0x140057: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:51)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 10,000 bytes in 1 blocks are definitely lost in loss record 59 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x140BFB: fc_layer_t::fc_layer_t(point_t, int) (fc_layer.h:23)
+==2737==    by 0x140178: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:54)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 18,432 bytes in 1 blocks are definitely lost in loss record 60 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x1414CF: conv_layer_t::conv_layer_t(unsigned short, unsigned short, unsigned short, point_t) (conv_layer_t.h:27)
+==2737==    by 0x13FF28: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:48)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 18,432 bytes in 1 blocks are definitely lost in loss record 61 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141304: relu_layer_t::relu_layer_t(point_t) (relu_layer_t.h:17)
+==2737==    by 0x13FF83: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:49)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 18,432 bytes in 1 blocks are definitely lost in loss record 62 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x14131C: relu_layer_t::relu_layer_t(point_t) (relu_layer_t.h:17)
+==2737==    by 0x13FF83: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:49)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 18,432 bytes in 1 blocks are definitely lost in loss record 63 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141334: relu_layer_t::relu_layer_t(point_t) (relu_layer_t.h:17)
+==2737==    by 0x13FF83: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:49)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 18,432 bytes in 1 blocks are definitely lost in loss record 64 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141081: pool_layer_t::pool_layer_t(unsigned short, unsigned short, point_t) (pool_layer_t.h:22)
+==2737==    by 0x13FFE9: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:50)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 18,432 bytes in 1 blocks are definitely lost in loss record 65 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DE0E: tensor_t<float>::tensor_t(int, int, int) (tensor_t.h:19)
+==2737==    by 0x141099: pool_layer_t::pool_layer_t(unsigned short, unsigned short, point_t) (pool_layer_t.h:22)
+==2737==    by 0x13FFE9: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:50)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 1,089,240 bytes in 27,231 blocks are still reachable in loss record 66 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x144BB6: case_t::case_t(case_t const&) (utils.h:9)
+==2737==    by 0x144C25: void __gnu_cxx::new_allocator<case_t>::construct<case_t, case_t const&>(case_t*, case_t const&) (new_allocator.h:136)
+==2737==    by 0x143593: void std::allocator_traits<std::allocator<case_t> >::construct<case_t, case_t const&>(std::allocator<case_t>&, case_t*, case_t const&) (alloc_traits.h:475)
+==2737==    by 0x1420C1: std::vector<case_t, std::allocator<case_t> >::push_back(case_t const&) (stl_vector.h:943)
+==2737==    by 0x13EB4B: read_test_cases(char const*, char const*) (utils.h:52)
+==2737==    by 0x13FEC9: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:45)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 1,310,720 bytes in 32,768 blocks are still reachable in loss record 67 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x144BB6: case_t::case_t(case_t const&) (utils.h:9)
+==2737==    by 0x146BC6: void std::_Construct<case_t, case_t const&>(case_t*, case_t const&) (stl_construct.h:75)
+==2737==    by 0x146A12: case_t* std::__uninitialized_copy<false>::__uninit_copy<case_t const*, case_t*>(case_t const*, case_t const*, case_t*) (stl_uninitialized.h:83)
+==2737==    by 0x1465A7: case_t* std::uninitialized_copy<case_t const*, case_t*>(case_t const*, case_t const*, case_t*) (stl_uninitialized.h:134)
+==2737==    by 0x145E6C: case_t* std::__uninitialized_copy_a<case_t const*, case_t*, case_t>(case_t const*, case_t const*, case_t*, std::allocator<case_t>&) (stl_uninitialized.h:289)
+==2737==    by 0x144E0D: case_t* std::__uninitialized_move_if_noexcept_a<case_t*, case_t*, std::allocator<case_t> >(case_t*, case_t*, case_t*, std::allocator<case_t>&) (stl_uninitialized.h:312)
+==2737==    by 0x143698: void std::vector<case_t, std::allocator<case_t> >::_M_realloc_insert<case_t const&>(__gnu_cxx::__normal_iterator<case_t*, std::vector<case_t, std::allocator<case_t> > >, case_t const&) (vector.tcc:424)
+==2737==    by 0x1420F9: std::vector<case_t, std::allocator<case_t> >::push_back(case_t const&) (stl_vector.h:948)
+==2737==    by 0x13EB4B: read_test_cases(char const*, char const*) (utils.h:52)
+==2737==    by 0x13FEC9: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:45)
+==2737== 
+==2737== 3,145,728 bytes in 1 blocks are still reachable in loss record 68 of 70
+==2737==    at 0x4C3045A: operator new(unsigned long) (vg_replace_malloc.c:344)
+==2737==    by 0x146576: __gnu_cxx::new_allocator<case_t>::allocate(unsigned long, void const*) (new_allocator.h:111)
+==2737==    by 0x145E2D: std::allocator_traits<std::allocator<case_t> >::allocate(std::allocator<case_t>&, unsigned long) (alloc_traits.h:436)
+==2737==    by 0x144DB7: std::_Vector_base<case_t, std::allocator<case_t> >::_M_allocate(unsigned long) (stl_vector.h:172)
+==2737==    by 0x143613: void std::vector<case_t, std::allocator<case_t> >::_M_realloc_insert<case_t const&>(__gnu_cxx::__normal_iterator<case_t*, std::vector<case_t, std::allocator<case_t> > >, case_t const&) (vector.tcc:406)
+==2737==    by 0x1420F9: std::vector<case_t, std::allocator<case_t> >::push_back(case_t const&) (stl_vector.h:948)
+==2737==    by 0x13EB4B: read_test_cases(char const*, char const*) (utils.h:52)
+==2737==    by 0x13FEC9: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:45)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 85,396,416 bytes in 27,231 blocks are still reachable in loss record 69 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x144B9B: case_t::case_t(case_t const&) (utils.h:9)
+==2737==    by 0x144C25: void __gnu_cxx::new_allocator<case_t>::construct<case_t, case_t const&>(case_t*, case_t const&) (new_allocator.h:136)
+==2737==    by 0x143593: void std::allocator_traits<std::allocator<case_t> >::construct<case_t, case_t const&>(std::allocator<case_t>&, case_t*, case_t const&) (alloc_traits.h:475)
+==2737==    by 0x1420C1: std::vector<case_t, std::allocator<case_t> >::push_back(case_t const&) (stl_vector.h:943)
+==2737==    by 0x13EB4B: read_test_cases(char const*, char const*) (utils.h:52)
+==2737==    by 0x13FEC9: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:45)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737== 
+==2737== 102,760,448 bytes in 32,768 blocks are still reachable in loss record 70 of 70
+==2737==    at 0x4C30B47: operator new[](unsigned long) (vg_replace_malloc.c:433)
+==2737==    by 0x12DF2F: tensor_t<float>::tensor_t(tensor_t<float> const&) (tensor_t.h:26)
+==2737==    by 0x144B9B: case_t::case_t(case_t const&) (utils.h:9)
+==2737==    by 0x146BC6: void std::_Construct<case_t, case_t const&>(case_t*, case_t const&) (stl_construct.h:75)
+==2737==    by 0x146A12: case_t* std::__uninitialized_copy<false>::__uninit_copy<case_t const*, case_t*>(case_t const*, case_t const*, case_t*) (stl_uninitialized.h:83)
+==2737==    by 0x1465A7: case_t* std::uninitialized_copy<case_t const*, case_t*>(case_t const*, case_t const*, case_t*) (stl_uninitialized.h:134)
+==2737==    by 0x145E6C: case_t* std::__uninitialized_copy_a<case_t const*, case_t*, case_t>(case_t const*, case_t const*, case_t*, std::allocator<case_t>&) (stl_uninitialized.h:289)
+==2737==    by 0x144E0D: case_t* std::__uninitialized_move_if_noexcept_a<case_t*, case_t*, std::allocator<case_t> >(case_t*, case_t*, case_t*, std::allocator<case_t>&) (stl_uninitialized.h:312)
+==2737==    by 0x143698: void std::vector<case_t, std::allocator<case_t> >::_M_realloc_insert<case_t const&>(__gnu_cxx::__normal_iterator<case_t*, std::vector<case_t, std::allocator<case_t> > >, case_t const&) (vector.tcc:424)
+==2737==    by 0x1420F9: std::vector<case_t, std::allocator<case_t> >::push_back(case_t const&) (stl_vector.h:948)
+==2737==    by 0x13EB4B: read_test_cases(char const*, char const*) (utils.h:52)
+==2737==    by 0x13FEC9: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:45)
+==2737== 
+==2737== LEAK SUMMARY:
+==2737==    definitely lost: 169,936 bytes in 42 blocks
+==2737==    indirectly lost: 11,040 bytes in 36 blocks
+==2737==      possibly lost: 0 bytes in 0 blocks
+==2737==    still reachable: 193,709,788 bytes in 120,010 blocks
+==2737==         suppressed: 0 bytes in 0 blocks
+==2737== 
+==2737== ERROR SUMMARY: 43 errors from 43 contexts (suppressed: 0 from 0)
+==2737== 
+==2737== 1 errors in context 1 of 43:
+==2737== Invalid read of size 8
+==2737==    at 0x13ED6A: train(std::vector<layer_t*, std::allocator<layer_t*> >&, tensor_t<float>&, tensor_t<float>&) (utils.h:77)
+==2737==    by 0x140272: MlModule::trainMlModel(char const*, char const*, char const*, char const*, char const*) (mlModule.cpp:62)
+==2737==    by 0x131437: unitTestCNN() (unitTest.cpp:247)
+==2737==    by 0x13014E: runUnitTest() (unitTest.cpp:52)
+==2737==    by 0x12B546: main (main.cpp:517)
+==2737==  Address 0xfffffffffffffff8 is not stack'd, malloc'd or (recently) free'd
+==2737== 
+==2737== ERROR SUMMARY: 43 errors from 43 contexts (suppressed: 0 from 0)
