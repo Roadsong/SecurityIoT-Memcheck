@@ -33,6 +33,7 @@ $ valgrind --leak-check=full --show-leak-kinds=all --log-file=[team_name].log ./
 - It takes forever to run a CNN test, so if you don't have sufficient time and memory, don't do that.
 - ```Anon``` will throw a hash error and terminate execution on Ubuntu 18.04.
 - ```Vegie Broilers``` will throw a segmentation fault and terminate execution on Ubuntu 18.04.
+- After ``` TBD ``` is the best
 
 
 ## Reference
